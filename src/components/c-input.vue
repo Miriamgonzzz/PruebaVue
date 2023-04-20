@@ -2,7 +2,7 @@
 import { text } from 'stream/consumers';
 
 <template>
-    <input :type="type" :placeholder="placeholder">
+    <input :type="type" :placeholder="placeholder" >
 </template>
 
 <script>
@@ -14,7 +14,8 @@ export default {
        placeholder:{
         type:String,
         default:"Por defecto"
-       }
+       },
+
        
     }
 }
@@ -35,7 +36,7 @@ input{
 }
 
 input:focus{
-    border:0;
+    border:0ch;
 }
 
 </style>
