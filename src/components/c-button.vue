@@ -24,8 +24,5 @@ button{
     border-color: var(--color-border);
     border-radius: 5px;
 }
-button:focus{
-    width: 160px;
-    box-shadow:  2px 2px 4px 0px grey;
-}
+
 </style>

@@ -1,8 +1,9 @@
 <template>
     <div class="v-content">
-        <CInput type="text" placeholder="Usuario"/>
+        <CInput v-model="usuario" type="text" placeholder="Usuario"/>
         <CInput type="password" placeholder="Password"/>
-        <CButton mensaje="Enviar" :ruta="ruta"></CButton>
+        <p>Hola: {{ usuario }}</p>
+        <CButton mensaje="Enviar" ></CButton>
     </div>
 </template>
   
@@ -15,6 +16,23 @@ export default{
         CInput,
         CButton
     },
+    data(){
+        return{
+            usuario:''
+        }
+    },
+    watch:{
+        usuario(value){
+            this.usuario=value;
+        }
+
+    },
+    computed:{
+
+    },
+    methods:{
+       
+    }
 
 }
 </script>
