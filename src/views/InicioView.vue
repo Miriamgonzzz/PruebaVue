@@ -1,9 +1,10 @@
 <template>
     <div class="v-content">
-        <CInput v-model="usuario" type="text" placeholder="Usuario"/>
-        <CInput type="password" placeholder="Password"/>
-        <p>Hola: {{ usuario }}</p>
-        <CButton mensaje="Enviar" ></CButton>
+        <CInput v-model="name" type="text" placeholder="Usuario"/>
+        <CInput v-model="password" type="password" placeholder="Password"/>
+        <p>Hola: {{name}}</p>
+        <p v-if="mensajeError">{{ mensajeError }}</p>
+        <CButton mensaje="Enviar" @click="check" :disabled="botonDeshabilitado"></CButton>
     </div>
 </template>
   
@@ -18,19 +19,46 @@ export default{
     },
     data(){
         return{
-            usuario:''
+            name:'',
+            password:'',
+            mensajeError:''
         }
     },
     watch:{
-        usuario(value){
-            this.usuario=value;
+         name(val){
+            if(!val){
+                this.mensajeError = 'El campo de nombre es obligatorio'
+            }else{
+                this.mensajeError = '';
+            }
+        },
+        password(val){
+            if(!val){
+                this.mensajeError = 'El campo de password es obligatorio'
+            }else{
+                this.mensajeError = '';
+            }
         }
+      
 
     },
     computed:{
+        botonDeshabilitado(){
+            return !this.name || !this.password;
+        }
 
     },
     methods:{
+
+        check(){
+            if(this.name === 'Pepe' && this.password==="12345"){
+                alert('Son correcta');
+
+            }else{
+                alert('No son correctas');
+            }
+        }
+
        
     }
 

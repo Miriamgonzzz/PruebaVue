@@ -2,7 +2,13 @@
 import { text } from 'stream/consumers';
 
 <template>
-    <input :type="type" :placeholder="placeholder" >
+    <input 
+    :type="type" 
+    :placeholder="placeholder" 
+    :value="modelValue" 
+    @input="$emit('update:modelValue', $event.target.value)"    
+    >
+  
 </template>
 
 <script>
@@ -11,11 +17,12 @@ export default {
     inheritAttrs:false,
     props:{
        type:String,
+        modelValue:String,
        placeholder:{
         type:String,
         default:"Por defecto"
        },
-
+  
        
     }
 }
@@ -35,8 +42,6 @@ input{
 
 }
 
-input:focus{
-    border:0ch;
-}
+
 
 </style>
