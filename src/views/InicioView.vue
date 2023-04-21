@@ -3,7 +3,7 @@
         <CInput v-model="name" type="text" placeholder="Usuario"/>
         <CInput v-model="password" type="password" placeholder="Password"/>
         <p>Hola: {{name}}</p>
-        <p v-if="mensajeError">{{ mensajeError }}</p>
+        <p v-if="showError">{{ mensajeError }}</p>
         <CButton mensaje="Enviar" @click="check" :disabled="botonDeshabilitado"></CButton>
     </div>
 </template>
@@ -21,22 +21,33 @@ export default{
         return{
             name:'',
             password:'',
-            mensajeError:''
+            showError:true,
+            mensajeError:'Debe proporcionar un nombre y una contraseña',
         }
     },
     watch:{
          name(val){
             if(!val){
-                this.mensajeError = 'El campo de nombre es obligatorio'
+                this.mensajeError = 'Debe proporcionar un nombre y una contraseña'
+                this.showError=true;
+            }else if (!this.password){
+             this.mensajeError = 'El campo de password es obligatorio'
+                this.showError=true;
             }else{
-                this.mensajeError = '';
+                this.mensajeError = ' ';
+                this.showError=false;
             }
         },
         password(val){
             if(!val){
-                this.mensajeError = 'El campo de password es obligatorio'
+                this.mensajeError =  'Debe proporcionar un nombre y una contraseña'
+                this.showError=true;
+            }else if (!this.name){
+                this.mensajeError = 'El campo de nombre es obligatorio'
+                this.showError=true;
             }else{
                 this.mensajeError = '';
+                this.showError=false;
             }
         }
       
