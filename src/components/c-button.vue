@@ -1,5 +1,5 @@
 <template>
-    <button>{{ mensaje }}</button>
+    <button class="c-button">{{ mensaje }}</button>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default{
 
 <style lang="scss" scoped>
 
-button{
+.c-button{
 
     margin: 1%;
     width: 40%;
