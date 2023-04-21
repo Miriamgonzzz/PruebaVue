@@ -2,7 +2,7 @@
 import { text } from 'stream/consumers';
 
 <template>
-    <input 
+    <input  class="c-input"
     :type="type" 
     :placeholder="placeholder" 
     :value="modelValue" 
@@ -30,8 +30,8 @@ export default {
 
 <style lang="scss" scoped>
 
-input{
-    margin: 1%;
+.c-input{
+    margin: 2%;
     width: 50%;
     height: 40px;
     font-size: 20px;
@@ -40,6 +40,9 @@ input{
     border-radius: 10px;
     border: 0ch;
 
+}
+.c-input:focus{
+    border: 5px solid var(--color-border) ;
 }
 
 

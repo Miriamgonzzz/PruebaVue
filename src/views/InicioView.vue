@@ -1,9 +1,10 @@
 <template>
     <div class="v-content">
+        <h1 class="c-titulo">Login</h1>
         <CInput v-model="name" type="text" placeholder="Usuario"/>
         <CInput v-model="password" type="password" placeholder="Password"/>
-        <p>Hola: {{name}}</p>
-        <p v-if="showError">{{ mensajeError }}</p>
+        <p class="c-parrafo"><strong>Hola:</strong> {{name}}</p>
+        <p class="c-parrafo c-error" v-if="showError">{{ mensajeError }}</p>
         <CButton mensaje="Enviar" @click="check" :disabled="botonDeshabilitado"></CButton>
     </div>
 </template>
@@ -22,13 +23,13 @@ export default{
             name:'',
             password:'',
             showError:true,
-            mensajeError:'Debe proporcionar un nombre y una contraseña',
+            mensajeError:'Debes proporcionar un nombre y una contraseña',
         }
     },
     watch:{
          name(val){
             if(!val){
-                this.mensajeError = 'Debe proporcionar un nombre y una contraseña'
+                this.mensajeError = 'Debes proporcionar un nombre y una contraseña'
                 this.showError=true;
             }else if (!this.password){
              this.mensajeError = 'El campo de password es obligatorio'
@@ -40,7 +41,7 @@ export default{
         },
         password(val){
             if(!val){
-                this.mensajeError =  'Debe proporcionar un nombre y una contraseña'
+                this.mensajeError =  'Debes proporcionar un nombre y una contraseña'
                 this.showError=true;
             }else if (!this.name){
                 this.mensajeError = 'El campo de nombre es obligatorio'
@@ -88,5 +89,22 @@ export default{
         border-radius:20px ;
        
     }
-    
+    .c-titulo{
+     
+       margin: -1px 0px 10px 1px;
+        padding: 5%;
+        width: 100%;
+        text-align: center;
+        border-radius: 20px 20px 0 0;
+        background: black;
+        color: white;
+        box-shadow: 0px 8px 5px var(--color-shadow);
+    }
+    .c-parrafo{
+        margin: 2% ;
+        font-size: 20px;
+    }
+    .c-error{
+        color:red;
+    }
 </style>
