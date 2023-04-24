@@ -80,6 +80,7 @@ export default{
         check(){
             if(this.name === 'Pepe' && this.password==="12345"){
                 alert('Son correcta');
+                this.$router.push({name:'lista'})
 
             }else{
                 alert('No son correctas');
