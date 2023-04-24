@@ -8,11 +8,11 @@ import { RouterLink, RouterView } from 'vue-router'
     
         
   </header>
-  <section>
+ 
 
-      <RouterView />
+  <RouterView />
     
-  </section>
+
 
  
 </template>
@@ -22,12 +22,7 @@ import { RouterLink, RouterView } from 'vue-router'
 header{
   width: 30%;
 }
-section{
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 
 </style>

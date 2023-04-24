@@ -2,5 +2,5 @@
 html,
 body{
     margin: 0;
-    background: linear-gradient(to right, var(--c-azul), var(--c-rosa));
+    background: linear-gradient(to right, var(--color-background-blue), var(--color-background-pink));
 }

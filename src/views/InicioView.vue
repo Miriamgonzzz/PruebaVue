@@ -1,22 +1,32 @@
 <template>
-    <div class="v-content">
-        <h1 class="c-titulo">Login</h1>
-        <CInput v-model="name" type="text" placeholder="Usuario"/>
-        <CInput v-model="password" type="password" placeholder="Password"/>
-        <p class="c-parrafo"><strong>Hola:</strong> {{name}}</p>
-        <p class="c-parrafo c-error" v-if="showError">{{ mensajeError }}</p>
-        <CButton mensaje="Enviar" @click="check" :disabled="botonDeshabilitado"></CButton>
-    </div>
+    <l-inicio>
+        <template #titulo>
+            <h1 class="c-titulo">Login</h1>
+        </template>
+        <template #form>
+            <CInput v-model="name" type="text" placeholder="Usuario"/>
+            <CInput v-model="password" type="password" placeholder="Password"/>
+        </template>
+        <template #parrafo>
+            <p class="c-parrafo"><strong>Hola:</strong> {{name}}</p>
+            <p class="c-parrafo c-parrafo__error" v-if="showError">{{ mensajeError }}</p>
+        </template>
+        <template #button>
+            <CButton mensaje="Enviar" @click="check" :disabled="botonDeshabilitado"></CButton>
+        </template>
+    </l-inicio>
 </template>
-  
 
 <script >
+import LInicio from '../layouts/l-inicio.vue'
 import CInput from '../components/c-input.vue';
 import CButton from '../components/c-button.vue';
 export default{
     components:{
+        LInicio,
         CInput,
-        CButton
+        CButton,
+       
     },
     data(){
         return{
@@ -28,28 +38,33 @@ export default{
     },
     watch:{
          name(val){
+            this.mensajeError = ' ';
+            this.showError=false;
             if(!val){
                 this.mensajeError = 'Debes proporcionar un nombre y una contraseña'
                 this.showError=true;
-            }else if (!this.password){
+            } 
+            if (!this.password){
              this.mensajeError = 'El campo de password es obligatorio'
                 this.showError=true;
-            }else{
-                this.mensajeError = ' ';
-                this.showError=false;
             }
+                
+            
         },
         password(val){
+
+            this.mensajeError = '';
+            this.showError=false;
             if(!val){
                 this.mensajeError =  'Debes proporcionar un nombre y una contraseña'
                 this.showError=true;
-            }else if (!this.name){
+            } 
+            if (!this.name){
                 this.mensajeError = 'El campo de nombre es obligatorio'
                 this.showError=true;
-            }else{
-                this.mensajeError = '';
-                this.showError=false;
             }
+               
+            
         }
       
 
@@ -78,17 +93,6 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-    .v-content{
-
-        width: 70%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border: 1px solid var(--c-black);
-        background: var(--c-white);
-        border-radius:20px ;
-       
-    }
     .c-titulo{
      
        margin: -1px 0px 10px 1px;
@@ -104,7 +108,7 @@ export default{
         margin: 2% ;
         font-size: 20px;
     }
-    .c-error{
+    .c-parrafo__error{
         color:red;
     }
 </style>
