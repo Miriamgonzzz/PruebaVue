@@ -4,15 +4,15 @@
             <h1 class="c-titulo">Login</h1>
         </template>
         <template #form>
-            <CInput v-model="name" type="text" placeholder="Usuario"/>
+            <CInput v-model="username" type="text" placeholder="Usuario"/>
             <CInput v-model="password" type="password" placeholder="Password"/>
         </template>
         <template #parrafo>
-            <p class="c-parrafo"><strong>Hola:</strong> {{name}}</p>
+            <p class="c-parrafo"><strong>Hola:</strong> {{username}}</p>
             <p class="c-parrafo c-parrafo__error" v-if="showError">{{ mensajeError }}</p>
         </template>
         <template #button>
-            <CButton mensaje="Enviar" @click="check" :disabled="botonDeshabilitado"></CButton>
+            <CButton mensaje="Enviar" @click="doLogin" :disabled="botonDeshabilitado"></CButton>
         </template>
     </l-inicio>
 </template>
@@ -21,6 +21,8 @@
 import LInicio from '../layouts/l-inicio.vue'
 import CInput from '../components/c-input.vue';
 import CButton from '../components/c-button.vue';
+import {userStore} from '../stores/user'
+//import {mapActions} from 'pinia'
 export default{
     components:{
         LInicio,
@@ -30,14 +32,14 @@ export default{
     },
     data(){
         return{
-            name:'',
+            username:'',
             password:'',
             showError:true,
             mensajeError:'Debes proporcionar un nombre y una contraseña',
         }
     },
     watch:{
-         name(val){
+         username(val){
             this.mensajeError = ' ';
             this.showError=false;
             if(!val){
@@ -59,7 +61,7 @@ export default{
                 this.mensajeError =  'Debes proporcionar un nombre y una contraseña'
                 this.showError=true;
             } 
-            if (!this.name){
+            if (!this.username){
                 this.mensajeError = 'El campo de nombre es obligatorio'
                 this.showError=true;
             }
@@ -71,24 +73,37 @@ export default{
     },
     computed:{
         botonDeshabilitado(){
-            return !this.name || !this.password;
+            return !this.username || !this.password;
         }
 
     },
     methods:{
 
-        check(){
-            if(this.name === 'Pepe' && this.password==="12345"){
-                alert('Son correcta');
-                this.$router.push({name:'lista'})
+        //...mapActions(userStore, ['login']),
 
-            }else{
-                alert('No son correctas');
+        async doLogin(){
+
+            const { username, password } = this
+
+            const doLogin = await userStore().login({ username, password })
+            console.log(doLogin);
+
+            if(doLogin){
+                this.$router.push({ name: 'lista' })
             }
-        }
+
+        //     if(this.name === 'Pepe' && this.password==="12345"){
+        //         alert('Son correcta');
+        //         this.$router.push({name:'lista'})
+
+        //     }else{
+        //         alert('No son correctas');
+        //     }
+        // }
 
        
     }
+}
 
 }
 </script>
