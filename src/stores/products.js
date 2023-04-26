@@ -9,7 +9,7 @@ export const productsStore = defineStore('products', {
    actions: {
       async fetchProducts() {
          const method = 'GET'
-         const url = '/products/getAll'
+         const url = 'https://gogoanime.consumet.stream/recent-release'
          return apiStore()
             .doRequest({ url, method })
             .then((res) => {

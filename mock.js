@@ -47,38 +47,38 @@ app.post('/user/login', (req, res) => {
    }
 })
 
-app.get('/products/getAll', (req, res) => {
-   const response = [
-      {
-         balance: '7.839',
-         type: 'Cuenta',
-         number: '**** **** **** **** **** 6993'
-      },
-      {
-         balance: '',
-         type: 'Tarjeta de débito',
-         number: '**** **** **** **** 9959'
-      },
-      {
-         balance: '',
-         type: 'Tarjeta de débito',
-         number: '**** **** **** **** 9959'
-      },
-      {
-         balance: '7.839',
-         type: 'Cuenta',
-         number: '**** **** **** **** **** 6993'
-      },
-      {
-         balance: '7.839',
-         type: 'Cuenta',
-         number: '**** **** **** **** **** 6993'
-      },
-      {
-         balance: '7.839',
-         type: 'Cuenta',
-         number: '**** **** **** **** **** 6993'
-      }
-   ]
-   res.send(response)
-})
+// app.get('/products/getAll', (req, res) => {
+//    const response = [
+//       {
+//          balance: '7.839',
+//          type: 'Cuenta',
+//          number: '**** **** **** **** **** 6993'
+//       },
+//       {
+//          balance: '',
+//          type: 'Tarjeta de débito',
+//          number: '**** **** **** **** 9959'
+//       },
+//       {
+//          balance: '',
+//          type: 'Tarjeta de débito',
+//          number: '**** **** **** **** 9959'
+//       },
+//       {
+//          balance: '7.839',
+//          type: 'Cuenta',
+//          number: '**** **** **** **** **** 6993'
+//       },
+//       {
+//          balance: '7.839',
+//          type: 'Cuenta',
+//          number: '**** **** **** **** **** 6993'
+//       },
+//       {
+//          balance: '7.839',
+//          type: 'Cuenta',
+//          number: '**** **** **** **** **** 6993'
+//       }
+//    ]
+//    res.send(response)
+// })

@@ -1,9 +1,9 @@
 <template>
-      <section class="l-inicio">
-        <div class="l-inicio__contenedor">
-            <slot name="titulo"></slot>
+      <section class="l-start">
+        <div class="l-start__container">
+            <slot name="title"></slot>
             <slot name="form"></slot>
-            <slot name="parrafo"></slot>
+            <slot name="paragraph"></slot>
             <slot name="button"></slot>
         </div>
 
@@ -14,19 +14,19 @@
 <script>
 
 export default {
-   name: 'LInicio'
+   name: 'LHome'
 }
 </script>
 
 <style lang="scss">
-.l-inicio{
+.l-start{
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.l-inicio__contenedor{
+.l-start__container{
     width: 70%;
     display: flex;
     flex-direction: column;

@@ -16,7 +16,7 @@ export default{
 
 .c-button{
 
-    margin: 1%;
+    margin: 5px;
     width: 40%;
     height: 40px;
     font-size: 20px;

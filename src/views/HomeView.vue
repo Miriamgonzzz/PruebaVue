@@ -1,31 +1,31 @@
 <template>
-    <l-inicio>
-        <template #titulo>
-            <h1 class="c-titulo">Login</h1>
+    <l-home>
+        <template #title>
+            <h1 class="c-title">Login</h1>
         </template>
         <template #form>
             <CInput v-model="username" type="text" placeholder="Usuario"/>
             <CInput v-model="password" type="password" placeholder="Password"/>
         </template>
-        <template #parrafo>
-            <p class="c-parrafo"><strong>Hola:</strong> {{username}}</p>
-            <p class="c-parrafo c-parrafo__error" v-if="showError">{{ mensajeError }}</p>
+        <template #paragraph>
+            <p class="c-paragraph"><strong>Hola:</strong> {{username}}</p>
+            <p class="c-paragraph c-paragraph__error" v-if="showError">{{ mensajeError }}</p>
         </template>
         <template #button>
             <CButton mensaje="Enviar" @click="doLogin" :disabled="botonDeshabilitado"></CButton>
         </template>
-    </l-inicio>
+    </l-home>
 </template>
 
 <script >
-import LInicio from '../layouts/l-inicio.vue'
+import LHome from '../layouts/l-home.vue'
 import CInput from '../components/c-input.vue';
 import CButton from '../components/c-button.vue';
 import {userStore} from '../stores/user'
 //import {mapActions} from 'pinia'
 export default{
     components:{
-        LInicio,
+        LHome,
         CInput,
         CButton,
        
@@ -109,7 +109,7 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-    .c-titulo{
+    .c-title{
      
        margin: -1px 0px 10px 1px;
         padding: 5%;
@@ -120,11 +120,11 @@ export default{
         color: white;
         box-shadow: 0px 8px 5px var(--color-shadow);
     }
-    .c-parrafo{
+    .c-paragraph{
         margin: 2% ;
         font-size: 20px;
     }
-    .c-parrafo__error{
+    .c-paragraph__error{
         color:red;
     }
 </style>
