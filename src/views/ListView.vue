@@ -4,7 +4,7 @@
          <CParagraph text="Estamos en lista"></CParagraph>
         </template>
         <template #list>
-            <CImg v-for="product in products" :key="product.animeId" :alt="imagen" :product="product"></CImg>
+            <CImg v-for="product in products" :key="product.animeId" :alt="imagen" :product="product" @click="mostrar"></CImg>
         </template>
     </l-list>
 </template>
@@ -26,13 +26,10 @@ import {productsStore} from '../stores/products'
                 products: []
             }
         },
-        computed:{
-            changeParagraph(){
-
-
-            }
-        },
         methods: {
+        mostrar() {
+            this.$router.push({ name: 'show' })
+        },
         async getAllProducts() {
             try {
                 const useProductStore = productsStore()
@@ -53,14 +50,6 @@ import {productsStore} from '../stores/products'
 </script>
 
 <style lang="scss">
-// #list{
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     //gap: 20px;
-//     border: 5px solid red;
-// }
 
 
 

@@ -9,22 +9,11 @@
 
 <style lang="scss" scoped>
 .l-list__cards{
-    // margin: 10px;
-    // width: 100%;
-    // height: 100%;
-    // text-align: center;
-    // display: inline-block;
-    
+    padding: 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr );
-    gap: 10px;
-    // flex-direction: column;
-    //align-items: center;
-    //justify-content: center;
-    // gap: 20px;
+    grid-template-columns: repeat(3, 500px );
+    gap: 25px;
     text-align: center;
-    border: 5px solid red;
-
 }
 
 </style>
