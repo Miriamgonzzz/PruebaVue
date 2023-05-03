@@ -6,10 +6,12 @@ export const productsStore = defineStore('products', {
       products: null
    }),
 
+ 
    actions: {
       async fetchProducts() {
          const method = 'GET'
-         const url = 'https://gogoanime.consumet.stream/recent-release'
+         const url = '/products/getAll'
+         
          return apiStore()
             .doRequest({ url, method })
             .then((res) => {

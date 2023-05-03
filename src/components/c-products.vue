@@ -1,7 +1,7 @@
 <template>
     <div class="c-product">
-        <img class="c-product__img" :src="product.animeImg" :title="product.animeTitle" :alt="alt" @mouseover="mostrarSpam= true" @mouseleave="mostrarSpam=false" @click="mostrar">
-        <span v-if="mostrarSpam" class="c-product__paragraph">{{ product.animeTitle }}</span>
+        <img class="c-product__img" :src="product.image_url" :title="product.animeTitle" :alt="alt" @mouseover="mostrarSpam= true" @mouseleave="mostrarSpam=false">
+        <span v-if="mostrarSpam" class="c-product__paragraph">{{ product.title}}</span>
     </div>
 </template>
 

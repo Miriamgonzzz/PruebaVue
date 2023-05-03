@@ -4,7 +4,7 @@
          <CParagraph text="Estamos en lista"></CParagraph>
         </template>
         <template #list>
-            <CImg v-for="product in products" :key="product.animeId" :alt="imagen" :product="product" @click="mostrar"></CImg>
+            <CProducts v-for="product in products" :key="product.mal_id" alt="imagen" :product="product" @click="mostrar(product.mal_id)"></CProducts>
         </template>
     </l-list>
 </template>
@@ -12,13 +12,13 @@
 <script>
 import LList from '../layouts/l-list.vue'
 import CParagraph from '../components/c-paragraph.vue'
-import CImg from '../components/c-product.vue'
+import CProducts from '../components/c-products.vue'
 import {productsStore} from '../stores/products'
-    export default {
+    export default{
         components:{
             LList,
             CParagraph,
-            CImg
+            CProducts
            
         },
         data() {
@@ -27,8 +27,8 @@ import {productsStore} from '../stores/products'
             }
         },
         methods: {
-        mostrar() {
-            this.$router.push({ name: 'show' })
+        mostrar(id) {
+            this.$router.push({ name: 'show', params: {id}})
         },
         async getAllProducts() {
             try {

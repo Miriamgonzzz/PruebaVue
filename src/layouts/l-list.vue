@@ -8,12 +8,13 @@
 </template>
 
 <style lang="scss" scoped>
+  
 .l-list__cards{
-    padding: 20px;
+    padding: 30px;
     display: grid;
-    grid-template-columns: repeat(3, 500px );
+    grid-template-columns: repeat(3, 30.50% );
     gap: 25px;
-    text-align: center;
+    justify-content: center;
 }
 
 </style>
