@@ -9,9 +9,9 @@ import '@/assets/styles/style.scss'
     <div class="v-app__line"></div>   
     <nav class="v-app__navbar">
       <ul class="v-app__ul">
-        <li class="v-app__li"><RouterLink to="/">Inicio</RouterLink></li>
-        <li class="v-app__li"><RouterLink to="/lista">Animes</RouterLink></li>
-        <li class="v-app__li"><RouterLink to="#">Formulario</RouterLink></li>
+        <li class="v-app__li"><RouterLink to="/start" class="v_app__router">Inicio</RouterLink></li>
+        <li class="v-app__li"><RouterLink to="/lista" class="v_app__router">Animes</RouterLink></li>
+        <li class="v-app__li"><RouterLink to="/form" class="v_app__router">Formulario</RouterLink></li>
       </ul>
     </nav>
   </header>
@@ -25,7 +25,7 @@ import '@/assets/styles/style.scss'
 .v-app__header{
   margin: 0;
   width: 100%;
-  background:var(--color-background-input) ;
+  background:var(--color-background-showForm) ;
   box-shadow: 0px 10px 5px var( --color-shadow) ;
 }
 //rgb(185, 239, 248)
@@ -60,7 +60,7 @@ import '@/assets/styles/style.scss'
   justify-content: center;
   align-items: center;
 }
-a{
+.v_app__router{
   font-size: 30px;
   color: black;
   text-decoration: none;

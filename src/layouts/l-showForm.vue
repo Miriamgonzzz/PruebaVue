@@ -1,8 +1,8 @@
 <template>
     <section class="l-show__container">
         <slot name="title"></slot>
-        <div class="l-show__card" >
-            <slot name="list"></slot>
+        <div  :class="{'l-show__cardShow':$route.path !== '/form','l-show__cardForm':$route.path === '/form'}" >
+            <slot name="content"></slot>
         </div>
     </section>
 </template>
@@ -16,7 +16,7 @@
 
 }
 
-.l-show__card{
+.l-show__cardShow{
 
     padding: 20px;
     width: 60%;
@@ -25,10 +25,15 @@
     grid-gap: 10px;
     justify-content: center;
     text-align: center;
-    background: var(--color-background-input);
+    background: var(--color-background-showForm);
     border: 1px solid black;
     border-radius: 10px;
 
+}
+.l-show__cardForm{
+    padding: 20px;
+    width: 60%;
+    background: var(--color-background-showForm);
 }
 
 </style>

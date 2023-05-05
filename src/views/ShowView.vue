@@ -1,24 +1,23 @@
 <template>
-    <l-show>
+    <l-showForm>
         <template #title>
             <CParagraph text="Mostrar"></CParagraph>
         </template>
-        <template #list>
+        <template #content>
             <CElements :products="products"></CElements>
         </template>
-    </l-show>
-    <!-- v-for="product in products" :key="product.mal_id" -->
+    </l-showForm>
 </template>
 
 
 <script>
-import LShow from '../layouts/l-show.vue'
+import LShowForm from '../layouts/l-showForm.vue'
 import CParagraph from '../components/c-paragraph.vue'
 import CElements from '../components/c-elements.vue'
 import {productsStore} from '../stores/products'
 
     export default {
-        components: {LShow,CParagraph,CElements},
+        components: {LShowForm,CParagraph,CElements},
         data() {
             return {
                 products:[],
@@ -30,12 +29,12 @@ import {productsStore} from '../stores/products'
             console.log(id)
             const useProductStore = productsStore()
             const selectedProducts = useProductStore.products.find(products => products.mal_id == id)
-            if(selectedProducts ===null ||selectedProducts===""){
-                this.$router.push({name: 'lista'})
-            }
             this.products = selectedProducts;
             console.log(selectedProducts)
             console.log(this.products)
+
+            //window.history.pushState(null, null, `/lista`)
+            window.history.replaceState(null, null, `/lista`)
 
             
           

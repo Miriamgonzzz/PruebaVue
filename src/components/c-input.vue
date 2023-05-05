@@ -35,11 +35,14 @@ export default {
     width: 50%;
     height: 40px;
     font-size: 20px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     background-color: var(--color-background-input);
     border-radius: 10px;
     border: 0ch;
 
+}
+::placeholder{
+    color: rgb(184, 201, 206) !important;
 }
 .c-input:focus{
     border: 5px solid var(--color-border) ;

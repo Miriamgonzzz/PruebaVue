@@ -14,6 +14,7 @@ export default {
 <style lang="scss" scoped>
 
 .c-paragraph {
+    margin: 30px 0 10px  0;
     font-size: 50px;
     text-align: center;
     font-weight: bold;
