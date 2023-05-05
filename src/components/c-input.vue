@@ -35,7 +35,7 @@ export default {
     width: 50%;
     height: 40px;
     font-size: 20px;
-    color: var(--c-white);
+    color: rgb(0, 0, 0);
     background-color: var(--color-background-input);
     border-radius: 10px;
     border: 0ch;

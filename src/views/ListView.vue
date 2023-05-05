@@ -1,7 +1,7 @@
 <template>
     <l-list>
        <template #title>
-         <CParagraph text="Estamos en lista"></CParagraph>
+         <CParagraph text="Lista de animes"></CParagraph>
         </template>
         <template #list>
             <CProducts v-for="product in products" :key="product.mal_id" alt="imagen" :product="product" @click="mostrar(product.mal_id)"></CProducts>
