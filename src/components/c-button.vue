@@ -16,10 +16,11 @@ export default{
 
 .c-button{
 
-    margin: 1%;
+    margin: 5px;
     width: 40%;
     height: 40px;
     font-size: 20px;
+    color:black;
     background-color: var(--color-background-button);
     border-color: var(--color-border);
     border-radius: 5px;

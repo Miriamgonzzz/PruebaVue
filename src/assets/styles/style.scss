@@ -1,14 +1,16 @@
 
 :root{
-    --c-white: rgb(255, 255, 255);
-    --c-black:  rgb(0, 0, 0);
-    --c-azul: rgb(20, 175, 202);
-    --c-rosa: rgb(223, 145, 171);
-
-    --color-background-input:rgb(12, 209, 143);
-    --color-background-button:rgb(180, 145, 221);
+   
+    --color-background-blue: rgba(144, 124, 144,56);
+    --color-background-pink: rgba(136, 141, 168,66);
+    --color-background-contenedor: rgb(255, 255, 255);
+    --color-background-showForm:rgba(137, 179, 192,75);
+    --color-background-input:rgba(96, 117, 145,57);
+    --color-background-button:rgba(152, 141, 140, 60);
     
+
+    --color-border-contenedor: rgb(0, 0, 0);
     --color-border: rgb(127, 71, 190);
 
-    --color-shadow: rgb(78, 11, 73);
+    --color-shadow: rgb(100, 12, 94);
 }
