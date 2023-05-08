@@ -4,11 +4,11 @@
       <CParagraph text="Mostrar"></CParagraph>
     </template>
     <template #content>
-<<<<<<< Updated upstream
+      <<<<<<< Updated upstream
       <CElements :src="product"></CElements>
-=======
+      =======
       <CElements :products="products"></CElements>
->>>>>>> Stashed changes
+      >>>>>>> Stashed changes
     </template>
   </l-showForm>
 </template>
