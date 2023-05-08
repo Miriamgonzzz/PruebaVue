@@ -39,6 +39,7 @@ export default {
     background-color: var(--color-background-input);
     border-radius: 10px;
     border: 0ch;
+    outline: none;
 
 }
 ::placeholder{

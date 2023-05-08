@@ -9,9 +9,9 @@ import '@/assets/styles/style.scss'
     <div class="v-app__line"></div>   
     <nav class="v-app__navbar">
       <ul class="v-app__ul">
-        <li class="v-app__li"><RouterLink to="/start" class="v_app__router">Inicio</RouterLink></li>
-        <li class="v-app__li"><RouterLink to="/lista" class="v_app__router">Animes</RouterLink></li>
-        <li class="v-app__li"><RouterLink to="/form" class="v_app__router">Formulario</RouterLink></li>
+        <li class="v-app__li" :style="start"><RouterLink to="/start" class="v_app__router">Inicio</RouterLink></li>
+        <li class="v-app__li" :style="lista"><RouterLink to="/lista" class="v_app__router">Animes</RouterLink></li>
+        <li class="v-app__li" :style="form"><RouterLink to="/form" class="v_app__router">Formulario</RouterLink></li>
       </ul>
     </nav>
   </header>
@@ -19,6 +19,33 @@ import '@/assets/styles/style.scss'
     <RouterView />
   </main>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+    }
+  },
+  computed: {
+   start(){
+      if (this.$route.path === '/start') {
+        return 'background-color: rgba(144, 124, 144,56);';
+      }
+   },
+   lista(){
+    if (this.$route.path === '/lista'){
+        return 'background-color: rgba(144, 124, 144,56);';
+      }
+   },
+   form(){
+     if (this.$route.path === '/form'){
+        return 'background-color: rgba(144, 124, 144,56);';
+      }
+   }
+      
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 
@@ -48,7 +75,7 @@ import '@/assets/styles/style.scss'
   width: 100%;
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  //gap: 20px;
   align-items: center;
 
  

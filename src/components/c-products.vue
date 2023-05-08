@@ -41,12 +41,15 @@ export default{
 }
 
 .c-product__img:hover{
-    opacity: 0.3;
+    //opacity: 0.3;
+    border-radius:50%;
+    box-shadow: 0px 0px 15px 15px var(--color-shadow);
+    transform: rotate(360deg);
 }
 .c-product__paragraph{
     padding: 5px;
     font-size: 20px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgb(255, 255, 255);
     border-radius: 10px;
     position: absolute;
     top: 50%;
