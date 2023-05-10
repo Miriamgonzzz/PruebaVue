@@ -1,18 +1,24 @@
 <template>
-  <div class="c-spirit__element" :style="{ background: background }">
-    <div class="insaid" :style="{ background: gradient }">
-      <div class="c-spirit__eyeD">
-        <div class="c-spirit__eyeD__pupila" :style="{ background: eyeD }"></div>
-      </div>
-      <div class="c-spirit__eyeI">
-        <div class="c-spirit__eyeI__pupila" :style="{ background: eyeI }"></div>
+  <div class="container">
+    <div class="c-spirit__element" :style="{ background: background }">
+      <div class="insaid" :style="{ background: gradient }">
+        <div class="c-spirit__eyeD">
+          <div class="c-spirit__eyeD__pupila" :style="{ background: eyeD }"></div>
+        </div>
+        <div class="c-spirit__eyeI">
+          <div class="c-spirit__eyeI__pupila" :style="{ background: eyeI }"></div>
+        </div>
       </div>
     </div>
+    <div
+      class="c-spirit__puddle"
+      :style="`--before-top: ${beforeTop}; --before-color: ${beforeColor}; --after-top: ${afterTop};--shadow-color: ${shadowColor};`"
+    ></div>
+    <div
+      class="c-spirit__shadow"
+      :style="`--before-top: ${beforeTop}; --before-color: ${beforeColor}`"
+    ></div>
   </div>
-  <div
-    class="c-spirit__puddle"
-    :style="`--before-top: ${beforeTop}; --before-color: ${beforeColor}; --after-top: ${afterTop}; --after-top: ${afterTop};`"
-  ></div>
 </template>
 
 <script>
@@ -25,7 +31,7 @@ export default {
     'beforeTop',
     'beforeColor',
     'afterTop',
-    'afterColor'
+    'shadowColor'
   ],
 
   data() {
@@ -35,22 +41,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  border: 1px solid black;
+  overflow: hidden;
+}
 .c-spirit__element {
-  left: 13%;
+  //margin: 0;
+  //left: 6%;
   width: 260px;
   height: 270px;
   display: inline-block;
-  position: relative;
-  border-radius: 60px;
+  //position: relative;
+  //border-radius: 60px;
   -webkit-clip-path: path(var(--path));
   clip-path: path(var(--path));
+  //transform: translate(-50%, -50%);
   animation: wave 3s infinite linear;
-  border-radius: 100px;
   background: rgb(65, 4, 235);
-  z-index: 2;
+  //rgb(65, 4, 235)
+  //z-index: 2;
 }
 .insaid {
-  margin: 0 10px 0 0;
+  //margin: 0 10px 0 0;
   position: absolute;
   top: 5px;
   left: 7px;
@@ -100,61 +112,55 @@ export default {
   border-radius: 50%;
   background: rgb(47, 0, 255);
 }
-.c-spirit__puddle {
-  width: 100%;
-  height: 10px;
-  background: black;
-}
-.c-spirit__puddle::before,
-.c-spirit__puddle::after {
-  content: '';
-  position: absolute;
+// .c-spirit__puddle {
+//   width: 100%;
+//   height: 50px;
+//   //position: relative;
+//   background: black;
+// }
+.c-spirit__shadow {
+  //content: '';
+  //position: absolute;
   background-color: var(--before-color);
-}
-
-.c-spirit__puddle::before {
-  top: var(--before-top);
+  display: inline-block;
+  //margin-left: 7%;
+  // margin-right: -7.2%;
   //31%
-  left: 13%;
-  transform: translate(-50%, -50%);
+  //left: 13%;
+  //transform: translate(-50%, -50%);
   width: 260px;
   height: 270px;
   -webkit-clip-path: path(var(--path));
   clip-path: path(var(--path));
+  z-index: 0;
+  box-shadow: 0 0 10px var(--shadow-color);
+  animation: wave 3s infinite linear;
 }
-
-.c-spirit__puddle::after {
-  top: var(--after-top);
+.c-spirit__puddle {
+  //content: '';
+  //position: absolute;
+  background-color: var(--before-color);
+  display: inline-block;
+  //top: var(--after-top);
   //61%
-  left: 12%;
-  transform: translateX(-50%);
+  //left: 12.5%;
+  //transform: translateX(-50%);
   width: 150px;
   height: 40px;
   border-radius: 50%;
-}
-
-.c-spirit__puddle::before,
-.c-spirit__puddle::after {
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-}
-
-.c-spirit__puddle::before {
-  animation: wave 3s infinite linear;
-}
-
-.c-spirit__puddle::after {
+  box-shadow: 0 0 10px var(--shadow-color);
   animation: ripple 3s infinite ease-in-out;
 }
 
 @keyframes wave {
   0% {
-    transform: translateX(-50%) translateY(0%) scale(1);
+    transform: translateX(10%) translateY(0%) scale(1);
   }
   50% {
-    transform: translateX(-50%) translateY(30%) scaleY(0.3) scaleX(1.2);
+    transform: translateX(10%) translateY(30%) scaleY(0.3) scaleX(1.2);
   }
   100% {
-    transform: translateX(-50%) translateY(0%) scale(1);
+    transform: translateX(10%) translateY(0%) scale(1);
   }
 }
 
