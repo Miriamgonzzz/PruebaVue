@@ -1,6 +1,6 @@
 <template>
   <CParagraph text="Explora el Universo del Anime"></CParagraph>
-  <div>
+  <div class="peito">
     <SpiritElement
       class="v-spiritElement__water"
       :beforeTop="water.beforeTop"
@@ -93,23 +93,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// div {
-//   margin: 10px;
-//   display: flex;
-//   flex-direction: column;
-//   //align-items: end;
-// }
-// .v-spiritElement__water {
-//   align-items: start;
-// }
-// .v-spiritElement__fire {
-//   align-items: end;
-// }
-// .v-spiritElement__earth {
-//   align-items: start;
-// }
+.peito {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(10, 233, 10);
+  //align-items: end;
+}
+.v-spiritElement__water {
+  align-self: flex-start;
+}
+.v-spiritElement__fire {
+  align-self: flex-end;
+}
+.v-spiritElement__earth {
+  align-self: flex-start;
+}
 
-// .v-spiritElement__electric {
-//   align-items: end;
-// }
+.v-spiritElement__electric {
+  align-self: flex-end;
+}
 </style>

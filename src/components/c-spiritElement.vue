@@ -42,8 +42,10 @@ export default {
 
 <style lang="scss" scoped>
 .container {
+  //display: inline-block;
+  //width: 40%;
+  position: relative;
   border: 1px solid black;
-  overflow: hidden;
 }
 .c-spirit__element {
   //margin: 0;
@@ -51,7 +53,7 @@ export default {
   width: 260px;
   height: 270px;
   display: inline-block;
-  //position: relative;
+  position: relative;
   //border-radius: 60px;
   -webkit-clip-path: path(var(--path));
   clip-path: path(var(--path));
@@ -59,7 +61,7 @@ export default {
   animation: wave 3s infinite linear;
   background: rgb(65, 4, 235);
   //rgb(65, 4, 235)
-  //z-index: 2;
+  z-index: 2;
 }
 .insaid {
   //margin: 0 10px 0 0;
@@ -120,16 +122,17 @@ export default {
 // }
 .c-spirit__shadow {
   //content: '';
-  //position: absolute;
+  position: absolute;
   background-color: var(--before-color);
   display: inline-block;
-  //margin-left: 7%;
-  // margin-right: -7.2%;
+  // margin-left: -90.2%;
+  // // margin-right: 0.3%;
+  // margin-top: 0%;
   //31%
-  //left: 13%;
+  left: 0.5%;
   //transform: translate(-50%, -50%);
-  width: 260px;
-  height: 270px;
+  width: 270px;
+  height: 290px;
   -webkit-clip-path: path(var(--path));
   clip-path: path(var(--path));
   z-index: 0;
@@ -138,12 +141,15 @@ export default {
 }
 .c-spirit__puddle {
   //content: '';
-  //position: absolute;
+  position: absolute;
   background-color: var(--before-color);
+  // margin-left: 2%;
+  // margin-right: 4%;
+  // margin-top: 13%;
   display: inline-block;
-  //top: var(--after-top);
+  top: 87%;
   //61%
-  //left: 12.5%;
+  left: 18.5%;
   //transform: translateX(-50%);
   width: 150px;
   height: 40px;
@@ -154,27 +160,27 @@ export default {
 
 @keyframes wave {
   0% {
-    transform: translateX(10%) translateY(0%) scale(1);
+    transform: translateY(-30%) scale(1);
   }
   50% {
-    transform: translateX(10%) translateY(30%) scaleY(0.3) scaleX(1.2);
+    transform: translateY(30%) scaleY(0.3) scaleX(1.2);
   }
   100% {
-    transform: translateX(10%) translateY(0%) scale(1);
+    transform: translateY(-30%) scale(1);
   }
 }
 
 @keyframes ripple {
   0% {
-    transform: translateX(-50%) scale(1);
+    transform: translateY(0%) scale(1);
     opacity: 1;
   }
   50% {
-    transform: translateX(-50%) scale(1.3);
+    transform: translateY(0%) scale(1.3);
     opacity: 0.7;
   }
   100% {
-    transform: translateX(-50%) scale(1);
+    transform: translateY(0%) scale(1);
     opacity: 1;
   }
 }
