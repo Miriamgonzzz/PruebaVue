@@ -12,27 +12,18 @@
     </div>
     <div
       class="c-spirit__puddle"
-      :style="`--before-top: ${beforeTop}; --before-color: ${beforeColor}; --after-top: ${afterTop};--shadow-color: ${shadowColor};`"
+      :style="`--background-color: ${backgroundColor}; --shadow-color: ${shadowColor};`"
     ></div>
     <div
       class="c-spirit__shadow"
-      :style="`--before-top: ${beforeTop}; --before-color: ${beforeColor}`"
+      :style="`--background-color: ${backgroundColor}; --shadow-color: ${shadowColor};`"
     ></div>
   </div>
 </template>
 
 <script>
 export default {
-  props: [
-    'background',
-    'gradient',
-    'eyeD',
-    'eyeI',
-    'beforeTop',
-    'beforeColor',
-    'afterTop',
-    'shadowColor'
-  ],
+  props: ['background', 'gradient', 'eyeD', 'eyeI', 'backgroundColor', 'shadowColor'],
 
   data() {
     return {}
@@ -42,29 +33,21 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  //display: inline-block;
-  //width: 40%;
   position: relative;
   border: 1px solid black;
 }
 .c-spirit__element {
-  //margin: 0;
-  //left: 6%;
   width: 260px;
   height: 270px;
   display: inline-block;
   position: relative;
-  //border-radius: 60px;
   -webkit-clip-path: path(var(--path));
   clip-path: path(var(--path));
-  //transform: translate(-50%, -50%);
   animation: wave 3s infinite linear;
   background: rgb(65, 4, 235);
-  //rgb(65, 4, 235)
   z-index: 2;
 }
 .insaid {
-  //margin: 0 10px 0 0;
   position: absolute;
   top: 5px;
   left: 7px;
@@ -114,23 +97,12 @@ export default {
   border-radius: 50%;
   background: rgb(47, 0, 255);
 }
-// .c-spirit__puddle {
-//   width: 100%;
-//   height: 50px;
-//   //position: relative;
-//   background: black;
-// }
 .c-spirit__shadow {
-  //content: '';
   position: absolute;
-  background-color: var(--before-color);
+  background: var(--background-color);
   display: inline-block;
-  // margin-left: -90.2%;
-  // // margin-right: 0.3%;
-  // margin-top: 0%;
-  //31%
   left: 0.5%;
-  //transform: translate(-50%, -50%);
+  top: -2%;
   width: 270px;
   height: 290px;
   -webkit-clip-path: path(var(--path));
@@ -140,17 +112,11 @@ export default {
   animation: wave 3s infinite linear;
 }
 .c-spirit__puddle {
-  //content: '';
   position: absolute;
-  background-color: var(--before-color);
-  // margin-left: 2%;
-  // margin-right: 4%;
-  // margin-top: 13%;
+  background: var(--background-color);
   display: inline-block;
   top: 87%;
-  //61%
   left: 18.5%;
-  //transform: translateX(-50%);
   width: 150px;
   height: 40px;
   border-radius: 50%;

@@ -3,9 +3,7 @@
   <div class="peito">
     <SpiritElement
       class="v-spiritElement__water"
-      :beforeTop="water.beforeTop"
-      :beforeColor="water.beforeColor"
-      :afterTop="water.afterTop"
+      :backgroundColor="water.backgroundColor"
       :shadowColor="water.shadow"
     />
     <SpiritElement
@@ -14,9 +12,7 @@
       :gradient="fire.gradient"
       :eyeD="fire.eyeD"
       :eyeI="fire.eyeI"
-      :beforeTop="fire.beforeTop"
-      :beforeColor="fire.beforeColor"
-      :afterTop="fire.afterTop"
+      :backgroundColor="fire.backgroundColor"
       :shadowColor="fire.shadow"
     />
     <SpiritElement
@@ -25,9 +21,7 @@
       :gradient="earth.gradient"
       :eyeD="earth.eyeD"
       :eyeI="earth.eyeI"
-      :beforeTop="earth.beforeTop"
-      :beforeColor="earth.beforeColor"
-      :afterTop="earth.afterTop"
+      :backgroundColor="earth.backgroundColor"
       :shadowColor="earth.shadow"
     />
     <SpiritElement
@@ -36,9 +30,7 @@
       :gradient="electric.gradient"
       :eyeD="electric.eyeD"
       :eyeI="electric.eyeI"
-      :beforeTop="electric.beforeTop"
-      :beforeColor="electric.beforeColor"
-      :afterTop="electric.afterTop"
+      :backgroundColor="electric.backgroundColor"
       :shadowColor="electric.shadow"
     />
   </div>
@@ -57,7 +49,7 @@ export default {
     return {
       water: {
         //beforeTop: '21.5%',
-        beforeColor: 'rgba(250, 250, 250, 0.705)',
+        backgroundColor: 'rgba(250, 250, 250, 0.705)',
         shadow: 'rgba(255, 255, 255, 0.8)'
       },
       fire: {
@@ -66,7 +58,7 @@ export default {
         eyeD: 'rgb(255, 123, 0)',
         eyeI: 'rgb(255, 123, 0)',
         //beforeTop: '48%',
-        beforeColor: 'rgb(218, 75, 18)',
+        backgroundColor: 'rgb(218, 75, 18)',
         shadow: 'rgb(255, 255, 255)'
       },
       earth: {
@@ -75,7 +67,7 @@ export default {
         eyeD: 'rgb(91, 180, 27)',
         eyeI: 'rgb(91, 180, 27)',
         beforeTop: '75%',
-        beforeColor: 'rgb(116, 235, 4)',
+        backgroundColor: 'rgb(116, 235, 4)',
         shadow: 'rgb(255, 255, 255)'
       },
       electric: {
@@ -83,8 +75,7 @@ export default {
         gradient: 'linear-gradient(to bottom, rgb(223, 201, 8), rgb(224, 162, 28))',
         eyeD: 'rgb(224, 162, 28)',
         eyeI: 'rgb(224, 162, 28)',
-        beforeTop: '102.5%',
-        beforeColor: 'rgb(231, 255, 13)',
+        backgroundColor: 'rgb(231, 255, 13)',
         shadow: 'rgb(255, 255, 255)'
       }
     }
