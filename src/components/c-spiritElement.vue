@@ -34,7 +34,6 @@ export default {
 <style lang="scss" scoped>
 .container {
   position: relative;
-  border: 1px solid black;
 }
 .c-spirit__element {
   width: 260px;

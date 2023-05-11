@@ -17,12 +17,11 @@ export default {
 
 <style lang="scss" scoped>
 .c-bocadillo {
-  width: 80%;
+  width: 100%;
   height: 500px;
   position: relative;
   background: red;
   border-radius: 30px;
-  grid-column: 2;
   box-shadow: 0 10px 10px black;
 }
 .c-bocadillo::after {
