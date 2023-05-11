@@ -8,8 +8,22 @@
       class="v-start__limo"
       :class="limo.inverted ? '--inverted' : ''"
     >
-      <SpiritElement class="v-start__limo--spirit" />
-      <CBocadillo class="v-start__limo--text" />
+      <SpiritElement
+        class="v-start__limo--spirit"
+        :background="limo.background"
+        :gradient="limo.gradient"
+        :eyeD="limo.eyeD"
+        :eyeI="limo.eyeI"
+        :backgroundColor="limo.backgroundColor"
+        :shadowColor="limo.shadow"
+      />
+      <CBocadillo
+        class="v-start__limo--text"
+        :left="limo.left"
+        :right="limo.right"
+        :rotate="limo.rotate"
+        :component="limo.component"
+      />
     </article>
   </section>
 
@@ -57,16 +71,27 @@
 import CParagraph from '../components/c-paragraph.vue'
 import CBocadillo from '../components/c-bocadillo.vue'
 import SpiritElement from '../components/c-spiritElement.vue'
+import CustomComponent from '../components/c-customComponent.vue'
+import Calendar from '../components/c-calendar.vue'
 
 const limos = [
-  { backgroundColor: 'rgb(137, 209, 231)', shadow: 'rgba(255, 255, 255, 0.8)' },
+  {
+    backgroundColor: 'rgb(137, 209, 231)',
+    shadow: 'rgba(255, 255, 255, 0.8)',
+    left: '-7%',
+    rotate: '90deg',
+    component: CustomComponent
+  },
   {
     background: 'red',
     gradient: 'linear-gradient(to bottom, rgb(255, 51, 0),rgb(255, 123, 0))',
     eyeD: 'rgb(255, 123, 0)',
     eyeI: 'rgb(255, 123, 0)',
     backgroundColor: 'rgb(243, 126, 90)',
+    right: '-6%',
+    rotate: '270deg',
     shadow: 'rgb(255, 255, 255)',
+    component: Calendar,
     inverted: true
   },
   {
@@ -76,7 +101,10 @@ const limos = [
     eyeI: 'rgb(91, 180, 27)',
     beforeTop: '75%',
     backgroundColor: 'rgb(116, 235, 4)',
-    shadow: 'rgb(255, 255, 255)'
+    left: '-7%',
+    rotate: '90deg',
+    shadow: 'rgb(255, 255, 255)',
+    component: CustomComponent
   },
   {
     background: 'rgb(255, 136, 0)',
@@ -85,6 +113,9 @@ const limos = [
     eyeI: 'rgb(224, 162, 28)',
     backgroundColor: 'rgb(231, 255, 13)',
     shadow: 'rgb(255, 255, 255)',
+    right: '-6%',
+    rotate: '270deg',
+    component: CustomComponent,
     inverted: true
   }
 ]
@@ -93,7 +124,9 @@ export default {
   components: {
     CParagraph,
     CBocadillo,
-    SpiritElement
+    SpiritElement,
+    CustomComponent,
+    Calendar
   },
   data() {
     return {
@@ -106,11 +139,12 @@ export default {
 <style lang="scss" scoped>
 .v-start__wrapper {
   padding-bottom: 50px;
+  padding-top: 20px;
   width: 98%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
   justify-content: center;
   align-items: center;
 }
