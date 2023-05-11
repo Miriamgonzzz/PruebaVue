@@ -6,6 +6,7 @@
       :backgroundColor="water.backgroundColor"
       :shadowColor="water.shadow"
     />
+    <CBocadillo :left="bocadilloDer.left" :rotate="bocadilloDer.rotate" />
     <SpiritElement
       class="v-spiritElement__fire"
       :background="fire.background"
@@ -15,6 +16,7 @@
       :backgroundColor="fire.backgroundColor"
       :shadowColor="fire.shadow"
     />
+    <CBocadillo :right="bocadilloIzq.right" :rotate="bocadilloIzq.rotate" />
     <SpiritElement
       class="v-spiritElement__earth"
       :background="earth.background"
@@ -24,6 +26,7 @@
       :backgroundColor="earth.backgroundColor"
       :shadowColor="earth.shadow"
     />
+    <CBocadillo :left="bocadilloDer.left" :rotate="bocadilloDer.rotate" />
     <SpiritElement
       class="v-spiritElement__electric"
       :background="electric.background"
@@ -33,23 +36,25 @@
       :backgroundColor="electric.backgroundColor"
       :shadowColor="electric.shadow"
     />
+    <CBocadillo :right="bocadilloIzq.right" :rotate="bocadilloIzq.rotate" />
   </div>
 </template>
 
 <script>
 import CParagraph from '../components/c-paragraph.vue'
+import CBocadillo from '../components/c-bocadillo.vue'
 import SpiritElement from '../components/c-spiritElement.vue'
 
 export default {
   components: {
     CParagraph,
+    CBocadillo,
     SpiritElement
   },
   data() {
     return {
       water: {
-        //beforeTop: '21.5%',
-        backgroundColor: 'rgba(250, 250, 250, 0.705)',
+        backgroundColor: 'rgb(137, 209, 231)',
         shadow: 'rgba(255, 255, 255, 0.8)'
       },
       fire: {
@@ -57,8 +62,7 @@ export default {
         gradient: 'linear-gradient(to bottom, rgb(255, 51, 0),rgb(255, 123, 0))',
         eyeD: 'rgb(255, 123, 0)',
         eyeI: 'rgb(255, 123, 0)',
-        //beforeTop: '48%',
-        backgroundColor: 'rgb(218, 75, 18)',
+        backgroundColor: 'rgb(243, 126, 90)',
         shadow: 'rgb(255, 255, 255)'
       },
       earth: {
@@ -77,6 +81,14 @@ export default {
         eyeI: 'rgb(224, 162, 28)',
         backgroundColor: 'rgb(231, 255, 13)',
         shadow: 'rgb(255, 255, 255)'
+      },
+      bocadilloDer: {
+        left: ' -20px',
+        rotate: '90deg'
+      },
+      bocadilloIzq: {
+        right: ' -20px',
+        rotate: '270deg'
       }
     }
   }
@@ -86,22 +98,27 @@ export default {
 <style lang="scss" scoped>
 .peito {
   margin: 10px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid rgb(10, 233, 10);
-  //align-items: end;
+  display: grid;
+  grid-template-columns: repeat(3, 15% 70% 15%);
+  gap: 10px;
+  border: 1px solid rgb(137, 209, 231);
+  align-items: center;
 }
 .v-spiritElement__water {
-  align-self: flex-start;
+  grid-column: 1;
+  grid-row: 1;
 }
 .v-spiritElement__fire {
-  align-self: flex-end;
+  grid-column: 3;
+  grid-row: 2;
 }
 .v-spiritElement__earth {
-  align-self: flex-start;
+  grid-column: 1;
+  grid-row: 3;
 }
 
 .v-spiritElement__electric {
-  align-self: flex-end;
+  grid-column: 3;
+  grid-row: 4;
 }
 </style>
