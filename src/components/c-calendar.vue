@@ -2,50 +2,44 @@
   <p class="title">Nuevos lanzamientos</p>
   <div class="container">
     <div class="superior">
-      <div class="Fecha">
-        <span class="left button" id="prev"> &lang; </span>
-        <span class="left hook"></span>
-        <span class="month-year" id="label"> June 20&0 </span>
-        <span class="right hook"></span>
-        <span class="right button" id="next"> &rang; </span>
-      </div>
-      <table class="dias"></table>
+      <Calendar v-model="selectedDate" :now="today" borderless />
     </div>
-    <div class="inferior"></div>
+    <div class="inferior">Pepo</div>
   </div>
 </template>
 
+<script>
+import { Calendar, DatePicker } from 'v-calendar'
+export default {
+  components: { Calendar, DatePicker },
+  data() {
+    return {
+      selectedDate: null,
+      today: new Date()
+    }
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 .title {
-  font-size: 25px;
+  font-size: 23px;
 }
 .container {
   width: 95%;
-  height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  //justify-content: center;
+  //align-items: center;
   gap: 10px;
   border: 2px solid black;
 }
 .superior {
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
   background: red;
 }
-.Fecha {
-  width: 100%;
-  background: white;
-  margin: 5px;
-  height: 15%;
-}
-.dias {
-  margin: 5px;
-  width: 100%;
-  background: rgb(177, 13, 141);
-  height: 100%;
+.vc-container .vc-weekday-1,
+.vc-container .vc-weekday-7 {
+  color: #6366f1;
 }
 .inferior {
   width: 45%;
