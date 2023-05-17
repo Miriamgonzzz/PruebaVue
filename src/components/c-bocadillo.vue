@@ -3,7 +3,7 @@
     class="c-bocadillo"
     :style="`--after-left:${left}; --after-right:${right}; --after-rotate:${rotate}`"
   >
-    <component :is="component" />
+    <component :is="component"></component>
   </div>
 </template>
 

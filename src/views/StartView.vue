@@ -78,7 +78,7 @@ const limos = [
   {
     backgroundColor: 'rgb(137, 209, 231)',
     shadow: 'rgba(255, 255, 255, 0.8)',
-    left: '-7%',
+    left: '-11%',
     rotate: '90deg',
     component: CustomComponent
   },
@@ -88,7 +88,7 @@ const limos = [
     eyeD: 'rgb(255, 123, 0)',
     eyeI: 'rgb(255, 123, 0)',
     backgroundColor: 'rgb(243, 126, 90)',
-    right: '-6%',
+    right: '-11%',
     rotate: '270deg',
     shadow: 'rgb(255, 255, 255)',
     component: Calendar,
@@ -101,7 +101,7 @@ const limos = [
     eyeI: 'rgb(91, 180, 27)',
     beforeTop: '75%',
     backgroundColor: 'rgb(116, 235, 4)',
-    left: '-7%',
+    left: '-11%',
     rotate: '90deg',
     shadow: 'rgb(255, 255, 255)',
     component: CustomComponent
@@ -113,7 +113,7 @@ const limos = [
     eyeI: 'rgb(224, 162, 28)',
     backgroundColor: 'rgb(231, 255, 13)',
     shadow: 'rgb(255, 255, 255)',
-    right: '-6%',
+    right: '-11%',
     rotate: '270deg',
     component: CustomComponent,
     inverted: true
