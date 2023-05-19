@@ -6,15 +6,26 @@
         @selected="handleDateSelected"
         :attributes="attrs"
         v-model="selectedDate"
-        :class="getHighlightClasses"
         borderless
       />
 
-      <p>Fecha seleccionada: {{ formattedDate }}</p>
+      <div class="inferior" v-if="displayDiv && selectedTitle.length > 0">
+        <div class="los">
+          <img class="cross" src="../assets/eliminar.png" alt="cross" @click="displayNoneDiv" />
+        </div>
+        <p class="select">Fecha seleccionada: {{ formattedDate }}</p>
+        <div class="pepr">
+          <div class="inferior__element" v-for="res in selectedTitle" :key="res.id">
+            <p>{{ res.title }}</p>
+            <p>Tipo: {{ res.type }}</p>
+            <p>Episodios: {{ res.episodes }}</p>
+            <img class="inferior__element__img" :src="res.image_url" alt="imagenes" />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
-
 <script>
 import { Calendar, DatePicker } from 'v-calendar'
 import 'v-calendar/style.css'
@@ -25,10 +36,10 @@ export default {
   data() {
     return {
       releases: [],
+      res: [],
+      fechas: [],
       selectedDate: null,
-      //today: new Date(),
       attrs: [
-        // This is a single attribute
         {
           key: 'today',
           content: true,
@@ -40,46 +51,50 @@ export default {
           dates: [new Date()]
         },
         {
-          bar: 'blue',
-          dates: [new Date(2023, 4, 5)],
-          popover: {
-            label: 'descripcion',
-            visibility: 'hover',
-            hideIndicator: false
-          }
+          bar: 'blue'
+          // dates: this.fechas.map((fecha) => {
+          //   const [day, month, year] = fecha.split('/')
+          //   return new Date(parseInt(year), parseInt(month) - 1, parseInt(day))
+          // })
         }
-      ],
-      selectedAnime: null
+      ]
     }
   },
   computed: {
-    getHighlightClasses() {
-      return (date) => {
-        const classes = []
-
-        if (this.selectedDate && date.toDateString() === this.selectedDate.toDateString()) {
-          classes.push('selected-date')
-        }
-
-        if (date.toDateString() === new Date().toDateString()) {
-          classes.push('current-date')
-        }
-
-        return classes
-      }
-    },
     formattedDate() {
+      const options = { year: 'numeric', month: 'numeric', day: 'numeric' }
+
       if (this.selectedDate) {
-        const options = { year: 'numeric', month: 'long', day: 'numeric' }
-        console.log(this.selectedDate)
         return this.selectedDate.toLocaleDateString('es-ES', options)
       }
-      return new Date().toDateString()
+      return new Date().toLocaleDateString('es-ES', options)
+    },
+    selectedTitle() {
+      const options = { year: 'numeric', month: 'numeric', day: 'numeric' }
+      if (this.selectedDate) {
+        const date = this.selectedDate.toLocaleDateString('es-ES', options)
+        this.res = []
+        for (var i = 0; i < this.releases.length; i++) {
+          const fecha = this.releases[i].fechaEstreno
+          if (date === fecha) {
+            this.res.push(this.releases[i])
+          }
+        }
+      }
+      return this.res
+    },
+    displayDiv() {
+      if (this.selectedDate) {
+        return 'display:block;'
+      }
     }
   },
   methods: {
     handleDateSelected(date) {
       this.selectedDate = date
+    },
+    displayNoneDiv() {
+      this.selectedDate = null
     },
     async getAllRelease() {
       try {
@@ -92,8 +107,12 @@ export default {
     }
   },
   created() {
-    console.log(this.getAllRelease())
-    console.log(this.selectedDate)
+    this.getAllRelease()
+
+    for (var i = 0; i < this.releases.length; i++) {
+      this.fechas.push(this.releases[i].fechaEstreno)
+    }
+    console.log(this.fechas)
   }
 }
 </script>
@@ -102,14 +121,7 @@ export default {
 .title {
   font-size: 23px;
 }
-.selected-date {
-  background-color: #b925ad; /* Color de fondo personalizado */
-  color: #ffffff; /* Color de texto personalizado */
-}
-.current-date {
-  background-color: #00ccff; /* Color de fondo para fecha actual */
-  color: #000000; /* Color de texto para fecha actual */
-}
+
 .container {
   margin: 2%;
   width: 95%;
@@ -198,5 +210,44 @@ export default {
   color: #005b49;
   font-size: 20px;
   box-shadow: 0px 5px 0px 1px black !important;
+}
+.inferior {
+  margin-top: -60%;
+  position: absolute;
+  background: white;
+  border: 2px solid black;
+  z-index: 5;
+}
+.los {
+  margin: 3px;
+  display: flex;
+  justify-content: end;
+}
+.cross {
+  width: 10%;
+}
+.select {
+  display: flex;
+  margin: 0;
+  height: 50px;
+  font-size: 30px;
+  color: white;
+  background: #000000;
+  justify-content: center;
+  align-items: center;
+}
+.pepr {
+  height: 450px;
+  overflow: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.inferior__element {
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+}
+.inferior__element__img {
+  width: 40%;
 }
 </style>

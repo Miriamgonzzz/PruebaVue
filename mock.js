@@ -49,46 +49,52 @@ app.post('/user/login', (req, res) => {
 app.get('/newReleases/getAll', (req, res) => {
   const response = [
     {
+      id: '1',
       title: 'The Ancient Magus Bride 2Seson',
       type: 'TV',
       episodes: '12',
       image_url: 'https://cdn.myanimelist.net/images/anime/1302/127665l.jpg',
-      fechaEstreno: '6/04/2023'
+      fechaEstreno: '6/4/2023'
     },
     {
+      id: '2',
       title: 'Edens Zero 2Seson',
       type: 'TV',
       episodes: 'Unknown',
       image_url: 'https://cdn.myanimelist.net/images/anime/1347/127064l.jpg',
-      fechaEstreno: '11/03/2023'
+      fechaEstreno: '11/3/2023'
     },
     {
+      id: '3',
       title: 'Feast of Amrita',
       type: 'Movie',
       episodes: '1',
       image_url: 'https://cdn.myanimelist.net/images/anime/1960/135589l.jpg',
-      fechaEstreno: '26/05/2023'
+      fechaEstreno: '26/5/2023'
     },
     {
+      id: '4',
       title: 'LIVE 4bit BEYOND THE PERiOD',
       type: 'Movie',
       episodes: '1',
       image_url: 'https://cdn.myanimelist.net/images/anime/1503/132452l.jpg',
-      fechaEstreno: '20/05/2023'
+      fechaEstreno: '20/5/2023'
     },
     {
+      id: '5',
       title: 'Collar×Malice -deep cover-',
       type: 'Movie',
       episodes: '2',
       image_url: 'https://cdn.myanimelist.net/images/anime/1535/133157l.jpg',
-      fechaEstreno: '26/05/2023'
+      fechaEstreno: '26/5/2023'
     },
     {
+      id: '6',
       title: 'Pretty Guardians Sailor Moon Cosmos the Movie',
       type: 'Movie',
       episodes: '2',
       image_url: 'https://cdn.myanimelist.net/images/anime/1388/133092l.jpg',
-      fechaEstreno: '09/06/2023'
+      fechaEstreno: '9/6/2023'
     }
   ]
   res.send(response)
