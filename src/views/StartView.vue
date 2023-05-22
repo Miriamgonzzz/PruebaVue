@@ -72,6 +72,7 @@ import CParagraph from '../components/c-paragraph.vue'
 import CBocadillo from '../components/c-bocadillo.vue'
 import SpiritElement from '../components/c-spiritElement.vue'
 import CustomComponent from '../components/c-customComponent.vue'
+import CBanner from '../components/c-banner.vue'
 import Calendar from '../components/c-calendar.vue'
 
 const limos = [
@@ -80,7 +81,7 @@ const limos = [
     shadow: 'rgba(255, 255, 255, 0.8)',
     left: '-11%',
     rotate: '90deg',
-    component: CustomComponent
+    component: CBanner
   },
   {
     background: 'red',
@@ -126,6 +127,7 @@ export default {
     CBocadillo,
     SpiritElement,
     CustomComponent,
+    CBanner,
     Calendar
   },
   data() {

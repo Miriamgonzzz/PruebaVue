@@ -5,7 +5,10 @@ import '@/assets/styles/style.scss'
 
 <template>
   <header class="v-app__header" v-if="$route.path !== '/'">
-    <p class="v-app__paragraph">AnimeFun</p>
+    <p class="v-app__paragraph">
+      AnimeFun
+      <img class="v-app__img" src="src/assets/salida.png" alt="salir" @click="doLogout()" />
+    </p>
     <div class="v-app__line"></div>
     <nav class="v-app__navbar">
       <ul class="v-app__ul">
@@ -23,6 +26,7 @@ import '@/assets/styles/style.scss'
 </template>
 
 <script>
+import { userStore } from '@/stores/user'
 export default {
   data() {
     return {}
@@ -42,6 +46,13 @@ export default {
       if (this.$route.path === '/form') {
         return 'background-color: rgba(144, 124, 144,56);'
       }
+    }
+  },
+  methods: {
+    doLogout() {
+      const useUserStore = userStore()
+      useUserStore.logout()
+      this.$router.push({ name: 'home' })
     }
   }
 }
@@ -84,6 +95,9 @@ export default {
   text-align: center;
   justify-content: center;
   align-items: center;
+}
+.v-app__img {
+  width: 5%;
 }
 .v_app__router {
   display: flex;

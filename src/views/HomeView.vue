@@ -78,6 +78,9 @@ export default {
 
       if (doLogin) {
         this.$router.push({ name: 'lista' })
+      } else {
+        this.mensajeError = 'Nombre o contraseña no son correctas'
+        this.showError = true
       }
     }
   }
