@@ -1,39 +1,75 @@
 <template>
+  <p class="title">Los mejores animes</p>
   <div class="wrap">
-    <div class="c-banner__container">
-      <div class="front"><img class="c-banner__container__img" src="../assets/eliminar.png" /></div>
-      <div class="back"><img class="c-banner__container__img" src="../assets/eliminar.png" /></div>
-      <div class="top"><img class="c-banner__container__img" src="../assets/eliminar.png" /></div>
-      <div class="bottom">bottom</div>
-      <div class="left"><img class="c-banner__container__img" src="../assets/eliminar.png" /></div>
-      <div class="right"><img class="c-banner__container__img" src="../assets/eliminar.png" /></div>
-    </div>
-    <div class="c-banner__container">
-      <div class="front"><img class="c-banner__container__img" src="../assets/eliminar.png" /></div>
-      <div class="back"><img class="c-banner__container__img" src="../assets/eliminar.png" /></div>
-      <div class="top"><img class="c-banner__container__img" src="../assets/eliminar.png" /></div>
-      <div class="bottom">bottom</div>
-      <div class="left"><img class="c-banner__container__img" src="../assets/eliminar.png" /></div>
-      <div class="right"><img class="c-banner__container__img" src="../assets/eliminar.png" /></div>
+    <div class="c-banner__container" v-for="(cube, cubeIndex) in [cube1, cube2]" :key="cubeIndex">
+      <div :class="claseFace[index]" v-for="(product, index) in cube" :key="index">
+        <img class="c-banner__container__img" :src="product.image.image_url" />
+      </div>
     </div>
   </div>
 </template>
+<script>
+import { productsStore } from '../stores/products'
+
+const claseFace = ['top', 'bottom', 'left', 'right', 'back', 'front']
+
+export default {
+  data() {
+    return { products: [], fetched: false, claseFace: claseFace }
+  },
+  computed: {
+    cube1() {
+      return this.products.slice(0, 6).map((product, index) => {
+        return {
+          image: product,
+          faceIndex: index
+        }
+      })
+    },
+    cube2() {
+      return this.products.slice(6).map((product, index) => {
+        return {
+          image: product,
+          faceIndex: index
+        }
+      })
+    }
+  },
+  methods: {
+    async getAllProducts() {
+      try {
+        const useProductStore = productsStore()
+        this.products = await useProductStore.fetchProducts()
+        this.fetched = true
+      } catch (e) {
+        this.error = true
+      }
+    }
+  },
+  created() {
+    this.getAllProducts()
+  }
+}
+</script>
 
 <style>
+.title {
+  font-size: 23px;
+}
+
 .wrap {
   height: 100%;
   display: flex;
   justify-content: center;
   perspective: 800px;
-  perspective-origin: 50% -100px;
+  perspective-origin: 50% -300px;
 }
 .c-banner__container {
-  margin: 150px;
-  width: 50px;
+  margin: 60px;
+  width: 200px;
   height: 30px;
   display: inline-block;
   position: relative;
-  width: 200px;
   transform-style: preserve-3d;
 }
 .c-banner__container div {
@@ -71,6 +107,7 @@
 }
 .c-banner__container__img {
   width: 100%;
+  height: 100%;
 }
 @keyframes spin {
   from {
@@ -82,6 +119,6 @@
 }
 
 .c-banner__container {
-  animation: spin 5s infinite linear;
+  animation: spin 20s infinite linear;
 }
 </style>
