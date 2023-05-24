@@ -5,10 +5,10 @@ import '@/assets/styles/style.scss'
 
 <template>
   <header class="v-app__header" v-if="$route.path !== '/'">
-    <p class="v-app__paragraph">
-      AnimeFun
+    <div class="v-app__container">
+      <p class="v-app__paragraph">AnimeFun</p>
       <img class="v-app__img" src="src/assets/salida.png" alt="salir" @click="doLogout()" />
-    </p>
+    </div>
     <div class="v-app__line"></div>
     <nav class="v-app__navbar">
       <ul class="v-app__ul">
@@ -66,17 +66,25 @@ export default {
   box-shadow: 0px 10px 5px var(--color-shadow);
 }
 //rgb(185, 239, 248)
+.v-app__container {
+  display: flex;
+}
 
+.v-app__paragraph {
+  margin: 0 0 0 70px;
+  width: 98%;
+  padding: 10px;
+  font-size: 3.5rem;
+  text-align: center;
+}
+.v-app__img {
+  margin: 10px;
+  width: 75px;
+}
 .v-app__line {
   width: 100%;
   height: 1px;
   background: var(--color-shadow);
-}
-.v-app__paragraph {
-  margin: 0;
-  padding: 10px;
-  font-size: 3.5rem;
-  text-align: center;
 }
 .v-app__ul {
   margin: 0;
@@ -96,9 +104,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.v-app__img {
-  width: 5%;
-}
+
 .v_app__router {
   display: flex;
   align-items: center;

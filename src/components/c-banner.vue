@@ -1,7 +1,11 @@
 <template>
   <p class="title">Los mejores animes</p>
   <div class="wrap">
-    <div class="c-banner__container" v-for="(cube, cubeIndex) in [cube1, cube2]" :key="cubeIndex">
+    <div
+      class="c-banner__container"
+      v-for="(cube, cubeIndex) in [cube1, cube2, cube3]"
+      :key="cubeIndex"
+    >
       <div :class="claseFace[index]" v-for="(product, index) in cube" :key="index">
         <img class="c-banner__container__img" :src="product.image.image_url" />
       </div>
@@ -27,7 +31,15 @@ export default {
       })
     },
     cube2() {
-      return this.products.slice(6).map((product, index) => {
+      return this.products.slice(6, 12).map((product, index) => {
+        return {
+          image: product,
+          faceIndex: index
+        }
+      })
+    },
+    cube3() {
+      return this.products.slice(12).map((product, index) => {
         return {
           image: product,
           faceIndex: index
