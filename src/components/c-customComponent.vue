@@ -5,17 +5,20 @@
     <div class="game-ready">
       <div class="start-button" :style="{ display: displayButton }" @click="startGame">Start</div>
     </div>
-    <div class="game">
+    <div class="game" ref="game">
       <div class="boll" :style="{ backgroundColor: colorBall }"></div>
       <div
         v-for="(item, index) in divs"
         :key="index"
         class="div_color"
+        ref="div_color"
+        :class="{ 'div_color ': item.fadeOut, animate: animate }"
         :style="{
-          backgroundColor: index === 1 ? item.color : colorDiv,
+          backgroundColor: item.colorDiv,
           opacity: item.opacity
         }"
         @click="chageColorDiv(index)"
+        @animationend="removeDiv(index)"
       ></div>
     </div>
     <div class="game-over" v-show="gameOver">
@@ -36,12 +39,13 @@ export default {
       displayButton: '',
       colors: ['#FF4571', '#FFD145', '#8260F6'],
       colorBall: '',
-      colorDiv: '#333344',
+      //colorDiv: '#333344',
       divs: [],
       intervalId: null,
       gameOver: false,
       i: 0,
-      number: 0
+      number: 0,
+      animate: false
     }
   },
   methods: {
@@ -55,21 +59,29 @@ export default {
       }, 4000)
     },
     chageColorDiv(index) {
-      this.colorDiv = this.colors[this.i]
+      this.divs[index].colorDiv = this.colors[this.i]
       this.i = (this.i + 1) % this.colors.length
     },
     addDiv() {
       const content = `Div ${this.number}`
-      const newItem = { content }
+      const newItem = { content, colorDiv: '#333344', fadeOut: false }
       this.number += 1
       this.divs.push(newItem)
-      console.log(this.divs)
+      console.log(newItem)
       // setTimeout(() => {
       //   this.removeDiv()
       // }, 5000)
     },
-    removeDiv() {
-      this.divs.splice(0)
+    removeDiv(index) {
+      this.divs.splice(index, 1)
+    },
+    calculateScale() {
+      const div = this.$refs.game
+      const divWidth = div.clientWidth
+      const divHeight = div.clientHeight
+      const scale = divWidth > divHeight ? divHeight / 800 : divWidth / 1200
+      const stickWidth = 180 * scale
+      const steps = divWidth / stickWidth
     }
     // watch: {
     //   divs: {
@@ -127,8 +139,10 @@ $color-dark: #333344;
   }
 
   .game {
+    position: relative;
     width: 100%;
     height: 320px;
+    //overflow: hidden;
   }
   .boll {
     top: 10px;
@@ -155,10 +169,14 @@ $color-dark: #333344;
     }
   }
   .div_color {
-    top: 250px;
+    top: 0;
+    left: 100px;
     position: absolute;
-    width: 70px;
+    width: 60px;
     height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     animation: slide-in 9s linear infinite;
   }
   .div_color:hover {
@@ -167,13 +185,16 @@ $color-dark: #333344;
   @keyframes slide-in {
     0% {
       opacity: 0;
-      transform: translateX(470%);
+      transform: translateX(500%);
     }
     5% {
       opacity: 1;
     }
-    100% {
+    90% {
       opacity: 1;
+    }
+    100% {
+      opacity: 0;
       transform: translateX(0%);
     }
   }
