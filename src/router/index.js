@@ -8,46 +8,37 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Home,
-     
+      component: Home
     },
     {
       path: '/start',
       name: 'start',
-      component: () => import('../views/StartView.vue'),
-   
+      component: () => import('../views/StartView.vue')
     },
     {
       path: '/lista',
       name: 'lista',
-      component: () => import('../views/ListView.vue'),
-      
+      component: () => import('../views/ListView.vue')
     },
     {
       path: '/show/:id',
       name: 'show',
-      component: () => import('../views/ShowView.vue'),
-     
+      component: () => import('../views/ShowView.vue')
     },
     {
       path: '/form',
       name: 'form',
-      component: () => import('../views/FormView.vue'),
-    
-    },
-  
+      component: () => import('../views/FormView.vue')
+    }
   ]
+})
 
-  
-  })
+router.beforeEach((to, from, next) => {
+  if (to.name === 'lista' && to.name === 'show' && to.name === 'form' && !userStore().isLogged) {
+    next({ name: 'home' })
+  }
 
-//   router.beforeEach((to,from,next)=>{
- 
-//     if(to.name==='lista'&& to.name==='show' && to.name==='form'&&  !userStore().isLogged){
-//       next({name: 'home'})
-//     }
-//       next()
-    
-// })
+  next()
+})
 
 export default router
