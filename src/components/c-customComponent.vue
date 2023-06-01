@@ -5,13 +5,16 @@
     <div class="game-ready">
       <div class="start-button" :style="{ display: displayButton }" @click="startGame">Start</div>
     </div>
-    <div class="game" ref="game">
-      <div class="boll" :style="{ backgroundColor: colorBall }"></div>
+    <div class="game">
+      <div
+        class="boll"
+        :style="{ backgroundColor: colorBall, display: displayBall }"
+        @animationiteration="animationIteration"
+      ></div>
       <div
         v-for="(item, index) in divs"
         :key="index"
         class="div_color"
-        ref="div_color"
         :class="{ 'div_color ': item.fadeOut, animate: animate }"
         :style="{
           backgroundColor: item.colorDiv,
@@ -39,13 +42,14 @@ export default {
       displayButton: '',
       colors: ['#FF4571', '#FFD145', '#8260F6'],
       colorBall: '',
+      sumaScore: 1,
+      displayBall: 'none',
       //colorDiv: '#333344',
       divs: [],
       intervalId: null,
       gameOver: false,
       i: 0,
-      number: 0,
-      animate: false
+      number: 0
     }
   },
   methods: {
@@ -53,10 +57,14 @@ export default {
       this.displayButton = 'none'
       this.intervalId = setInterval(() => {
         this.colorBall = this.colors[Math.floor(Math.random() * this.colors.length)]
+        console.log(this.colorBall)
       }, 1000)
       this.intervalId = setInterval(() => {
         this.addDiv()
-      }, 4000)
+      }, 3000)
+      setTimeout(() => {
+        this.displayBall = 'block'
+      }, 10000)
     },
     chageColorDiv(index) {
       this.divs[index].colorDiv = this.colors[this.i]
@@ -67,37 +75,18 @@ export default {
       const newItem = { content, colorDiv: '#333344', fadeOut: false }
       this.number += 1
       this.divs.push(newItem)
-      console.log(newItem)
-      // setTimeout(() => {
-      //   this.removeDiv()
-      // }, 5000)
     },
     removeDiv(index) {
       this.divs.splice(index, 1)
     },
-    calculateScale() {
-      const div = this.$refs.game
-      const divWidth = div.clientWidth
-      const divHeight = div.clientHeight
-      const scale = divWidth > divHeight ? divHeight / 800 : divWidth / 1200
-      const stickWidth = 180 * scale
-      const steps = divWidth / stickWidth
-    }
-    // watch: {
-    //   divs: {
-    //     handler(newVal) {
-    //       if (newVal.length > 0) {
-    //         setTimeout(() => {
-    //           this.removeDiv(0)
-    //         }, 5000)
-    //       } else {
-    //         this.gameOver = true
-    //         clearInterval(this.intervalId)
-    //       }
-    //     },
-    //     deep: true
-    //   }
-    // }
+    animationIteration(event) {
+      this.sumaScore++
+      if (this.sumaScore === 2) {
+        this.score++
+        this.sumaScore = 1
+      }
+    },
+    watch: {}
   }
 }
 </script>
@@ -139,10 +128,10 @@ $color-dark: #333344;
   }
 
   .game {
-    position: relative;
+    //position: relative;
     width: 100%;
-    height: 320px;
-    //overflow: hidden;
+    height: 345px;
+    overflow: hidden;
   }
   .boll {
     top: 10px;
@@ -151,25 +140,25 @@ $color-dark: #333344;
     width: 70px;
     height: 70px;
     border-radius: 40px;
-    animation: jump 3s;
+    animation: jump 3.5s;
     animation-iteration-count: infinite;
   }
   @keyframes jump {
     0% {
-      transform: translateY(0%);
-      -webkit-animation-timing-function: ease-in;
-    }
-    50% {
-      transform: translateY(170px);
+      transform: translateY(150px);
       -webkit-animation-timing-function: ease-out;
     }
-    100% {
+    50% {
       transform: translateY(0%);
       -webkit-animation-timing-function: ease-in;
+    }
+    100% {
+      transform: translateY(150px);
+      -webkit-animation-timing-function: ease-out;
     }
   }
   .div_color {
-    top: 0;
+    top: 250px;
     left: 100px;
     position: absolute;
     width: 60px;
@@ -177,7 +166,7 @@ $color-dark: #333344;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: slide-in 9s linear infinite;
+    animation: slide-in 20s linear;
   }
   .div_color:hover {
     cursor: pointer;
@@ -185,17 +174,17 @@ $color-dark: #333344;
   @keyframes slide-in {
     0% {
       opacity: 0;
-      transform: translateX(500%);
+      transform: translateX(1700%);
     }
     5% {
       opacity: 1;
     }
-    90% {
+    95% {
       opacity: 1;
     }
     100% {
       opacity: 0;
-      transform: translateX(0%);
+      transform: translateX(-200%);
     }
   }
   .game-over {
